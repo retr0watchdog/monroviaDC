@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events Calendar - Stop the Data Center in Monrovia</title>
+  <meta name="description" content="Join our community events to stop the data center development in Monrovia. Town halls, protests, and petition drives.">
+  <link rel="stylesheet" href="style.css">
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="navbar">
+        <h1><a href="index.html">Stop the Data Center</a></h1>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <nav id="menu">
+          <a href="index.html">Home</a>
+          <a href="backstory.html">Back Story</a>
+          <a href="events.html">Events</a>
+          <a href="library.html">PDF Library</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+      </header>
+
+  <section class="page-hero">
+    <img src="volunteers.jpg" alt="Neighbors organizing an event" loading="eager">
+    <h2>Upcoming Events</h2>
+  </section>
+
+  <main id="main-content">
+    <div id="calendar"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Stop the Data Center in Monrovia</p>
+  </footer>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: [
+          {
+            title: 'Town Hall Meeting',
+            start: '2025-08-11T19:00:00'
+          },
+          {
+            title: 'Community Protest',
+            start: '2025-08-20T17:30:00'
+          },
+          {
+            title: 'Petition Signing',
+            start: '2025-08-23'
+          },
+          {
+            title: 'Monrovia Festival',
+            start: '2025-09-05',
+            end: '2025-09-08',
+            url: 'https://www.monroviafestival.com/monrovia-festival.html',
+            color: '#006600',
+            textColor: 'white'
+          }
+        ]
+      });
+      calendar.render();
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
