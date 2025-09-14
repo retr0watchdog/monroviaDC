@@ -14,8 +14,8 @@
     
     <header class="navbar">
         <h1><a href="index.html">Stop the Data Center</a></h1>
-        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-        <nav id="menu">
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav id="menu" role="navigation" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="backstory.html">Back Story</a>
           <a href="events.html">Events</a>
@@ -63,6 +63,18 @@
             end: '2025-09-08',
             url: 'https://www.monroviafestival.com/monrovia-festival.html',
             color: '#006600',
+            textColor: 'white'
+          },
+          {
+            title: 'Mooresville Street Fair',
+            start: '2025-09-20',
+            color: '#B30000',
+            textColor: 'white'
+          },
+          {
+            title: 'Action Rally',
+            start: '2025-09-24T18:00:00',
+            color: '#B30000',
             textColor: 'white'
           }
         ]

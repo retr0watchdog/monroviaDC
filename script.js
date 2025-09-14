@@ -1,7 +1,17 @@
-// Mobile menu toggle functionality
+// Enhanced Mobile menu toggle functionality
 function toggleMenu() {
   const menu = document.getElementById('menu');
+  const menuToggle = document.querySelector('.menu-toggle');
+  
   menu.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+  
+  // Prevent body scroll when menu is open on mobile
+  if (menu.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 }
 
 // Close menu when clicking outside
@@ -11,14 +21,74 @@ document.addEventListener('click', function(event) {
   
   if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
     menu.classList.remove('active');
+    menuToggle.classList.remove('active');
+    document.body.style.overflow = '';
   }
 });
 
 // Close menu when window is resized to desktop size
 window.addEventListener('resize', function() {
-  if (window.innerWidth > 1200) {
+  if (window.innerWidth > 1024) {
     const menu = document.getElementById('menu');
+    const menuToggle = document.querySelector('.menu-toggle');
     menu.classList.remove('active');
+    menuToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close menu when navigation link is clicked (mobile)
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 1024) {
+        const menu = document.getElementById('menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        menu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+});
+
+// Set active navigation item based on current page
+function setActiveNavItem() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  
+  navLinks.forEach(link => {
+    link.classList.remove('current-page');
+    const linkPage = link.getAttribute('href');
+    
+    // Handle both relative and absolute paths
+    if (linkPage === currentPage || 
+        (currentPage === '' && linkPage === 'index.html') ||
+        (currentPage === 'index.html' && linkPage === 'index.html')) {
+      link.classList.add('current-page');
+    }
+  });
+}
+
+// Enhanced keyboard navigation
+document.addEventListener('keydown', function(e) {
+  // Close mobile menu with Escape key
+  if (e.key === 'Escape') {
+    const menu = document.getElementById('menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+      menuToggle.focus();
+    }
+  }
+  
+  // Toggle menu with Enter or Space on menu toggle
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('menu-toggle')) {
+    e.preventDefault();
+    toggleMenu();
   }
 });
 
@@ -164,6 +234,9 @@ function handleContactForm() {
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Set active navigation item
+  setActiveNavItem();
+  
   // Start countdown timer
   updateCountdown();
   setInterval(updateCountdown, 1000);
