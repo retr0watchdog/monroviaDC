@@ -71,6 +71,226 @@ function setActiveNavItem() {
   });
 }
 
+// Event Popup System
+const eventPopupSystem = {
+  // Critical events that should show popups
+  criticalEvents: [
+    {
+      id: 'plan-commission-vote',
+      title: 'Plan Commission Vote',
+      date: '2025-09-29',
+      time: '6:00 PM',
+      location: 'County Admin Building, Martinsville, IN',
+      description: 'Critical Plan Commission vote on data center rezoning. Your attendance and voice are crucial!',
+      actionUrl: 'events.html',
+      actionText: 'Get Details'
+    },
+    {
+      id: 'october-debate',
+      title: 'October 2nd Debate',
+      date: '2025-10-02',
+      time: 'TBA',
+      location: 'Location TBA',
+      description: 'Important debate regarding the data center proposal. Time and location details on our Facebook page.',
+      actionUrl: 'https://www.facebook.com/profile.php?id=61580043022168',
+      actionText: 'Check Facebook'
+    },
+    {
+      id: 'commissioner-meeting',
+      title: 'Commissioner Meeting & Coffee Rally',
+      date: '2025-10-06',
+      time: '9:30 AM',
+      location: '180 S Main St, Martinsville, IN',
+      description: 'Morgan County Commissioner Meeting with Coffee & Donut Rally at 8:30am. Rally location on Facebook.',
+      actionUrl: 'events.html',
+      actionText: 'Get Details'
+    }
+  ],
+
+  // Check if an event should show popup
+  shouldShowPopup(event) {
+    const now = new Date();
+    const eventDate = new Date(event.date + 'T23:59:59'); // End of event day
+    const daysBefore = 7; // Show popup 7 days before event
+    const showFromDate = new Date(eventDate.getTime() - (daysBefore * 24 * 60 * 60 * 1000));
+    
+    // Show popup if we're within the window and event hasn't passed
+    return now >= showFromDate && now <= eventDate;
+  },
+
+  // Get the most urgent upcoming event
+  getUrgentEvent() {
+    const now = new Date();
+    const upcomingEvents = this.criticalEvents
+      .filter(event => this.shouldShowPopup(event))
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    return upcomingEvents[0] || null;
+  },
+
+  // Check if popup was already dismissed today
+  wasPopupDismissedToday(eventId) {
+    const dismissedDate = localStorage.getItem(`popup-dismissed-${eventId}`);
+    if (!dismissedDate) return false;
+    
+    const today = new Date().toDateString();
+    return dismissedDate === today;
+  },
+
+  // Mark popup as dismissed for today
+  markPopupDismissed(eventId) {
+    const today = new Date().toDateString();
+    localStorage.setItem(`popup-dismissed-${eventId}`, today);
+  },
+
+  // Show the popup
+  showPopup(event) {
+    const popup = document.getElementById('event-popup');
+    const title = document.getElementById('popup-title');
+    const eventInfo = document.getElementById('popup-event-info');
+    const actionBtn = document.getElementById('popup-action-btn');
+    
+    if (!popup || !title || !eventInfo || !actionBtn) return;
+
+    // Format the event date
+    const eventDate = new Date(event.date);
+    const dateOptions = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    const formattedDate = eventDate.toLocaleDateString('en-US', dateOptions);
+
+    // Populate popup content
+    title.textContent = `Urgent: ${event.title}`;
+    eventInfo.innerHTML = `
+      <h4>${event.title}</h4>
+      <p class="event-date"><strong>Date:</strong> ${formattedDate}</p>
+      <p><strong>Time:</strong> ${event.time}</p>
+      <p class="event-location"><strong>Location:</strong> ${event.location}</p>
+      <p>${event.description}</p>
+    `;
+    
+    actionBtn.href = event.actionUrl;
+    actionBtn.textContent = event.actionText;
+    
+    // Show popup with animation
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Mark as shown for today
+    this.markPopupDismissed(event.id);
+  },
+
+  // Initialize popup system
+  init() {
+    // Only show on main pages, not admin
+    if (window.location.pathname.includes('/admin/')) return;
+    
+    const urgentEvent = this.getUrgentEvent();
+    if (!urgentEvent) return;
+    
+    // Don't show if already dismissed today
+    if (this.wasPopupDismissedToday(urgentEvent.id)) return;
+    
+    // Show popup after a short delay
+    setTimeout(() => {
+      this.showPopup(urgentEvent);
+    }, 2000);
+  }
+};
+
+// Close popup function (called from HTML)
+function closeEventPopup() {
+  const popup = document.getElementById('event-popup');
+  if (popup) {
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+// Close popup when clicking outside
+document.addEventListener('click', function(event) {
+  const popup = document.getElementById('event-popup');
+  const popupContent = document.querySelector('.popup-content');
+  
+  if (popup && popup.style.display === 'flex') {
+    if (!popupContent.contains(event.target)) {
+      closeEventPopup();
+    }
+  }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const popup = document.getElementById('event-popup');
+    if (popup && popup.style.display === 'flex') {
+      closeEventPopup();
+    }
+  }
+});
+
+// Initialize popup system when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize existing functionality first
+  setActiveNavItem();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  handleContactForm();
+  initializeLibrarySearch();
+  
+  // Initialize popup system
+  eventPopupSystem.init();
+  
+  // Add smooth reveal animations for sections
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe sections for animation
+  document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+  });
+  
+  // Handle image loading
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', function() {
+        this.classList.add('loaded');
+      });
+      img.addEventListener('error', function() {
+        this.style.display = 'none';
+      });
+    }
+  });
+  
+  // Add loading skeleton to images
+  images.forEach(img => {
+    if (!img.classList.contains('loaded')) {
+      img.style.background = 'var(--line)';
+      img.classList.add('image-skeleton');
+    }
+  });
+});
+
 // Enhanced keyboard navigation
 document.addEventListener('keydown', function(e) {
   // Close mobile menu with Escape key
@@ -106,38 +326,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Newsletter form functionality
+// Newsletter form functionality with Formspree
 document.addEventListener('DOMContentLoaded', function() {
   const newsletterForm = document.getElementById('newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const emailInput = document.getElementById('newsletter-email');
       const messageElement = document.getElementById('newsletter-message');
-      const email = emailInput.value.trim();
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
       
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        showMessage(messageElement, 'Please enter a valid email address.', 'error');
-        return;
-      }
+      // Show loading state
+      submitBtn.textContent = 'Subscribing...';
+      submitBtn.disabled = true;
+      showMessage(messageElement, 'Subscribing to newsletter...', '');
       
-      // Simulate form submission (replace with actual backend integration)
-      showMessage(messageElement, 'Submitting...', '');
-      emailInput.disabled = true;
-      
+      // Let Formspree handle the actual submission
+      // This will be processed after the form submits
       setTimeout(() => {
-        showMessage(messageElement, 'Thank you for subscribing! We\'ll keep you updated.', 'success');
-        emailInput.value = '';
-        emailInput.disabled = false;
-        
-        // Clear success message after 5 seconds
-        setTimeout(() => {
-          showMessage(messageElement, '', '');
-        }, 5000);
-      }, 1000);
+        // Reset button state after a delay to allow Formspree to process
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 2000);
+    });
+    
+    // Handle Formspree response (if page reloads, this won't run, but that's okay)
+    newsletterForm.addEventListener('formdata', function() {
+      const messageElement = document.getElementById('newsletter-message');
+      showMessage(messageElement, 'Thank you for subscribing! We\'ll keep you updated.', 'success');
     });
   }
 });

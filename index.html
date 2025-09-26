@@ -71,13 +71,15 @@
     <header class="navbar">
         <h1><a href="index.html">Stop the Data Center</a></h1>
         <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        <nav id="menu" role="navigation" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="backstory.html">Back Story</a>
-          <a href="events.html">Events</a>
-          <a href="library.html">PDF Library</a>
-          <a href="donate.html">Donate</a>
-        </nav>
+    <nav id="menu" role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="backstory.html">Back Story</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="events.html">Events</a>
+      <a href="library.html">PDF Library</a>
+      <a href="order.html">Order</a>
+      <a href="donate.html">Donate</a>
+    </nav>
       </header>
       
 
@@ -89,7 +91,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://www.change.org/p/stop-the-data-center-monrovia" target="_blank" rel="noopener noreferrer">Sign Petition</a>
             <a class="btn btn-primary" href="events.html">See Events</a>
-            <a class="btn btn-donate" href="donate.html">Donate</a>
+            <a class="btn btn-donate" href="https://www.gofundme.com/f/support-legal-action-to-oppose-morgan-county-data-center" target="_blank" rel="noopener noreferrer">Legal Fund</a>
           </div>
         </div>
       </section>
@@ -97,29 +99,29 @@
         <div class="container">
           <h2>Campaign Progress</h2>
           <div class="milestones">
-            <div class="milestone completed">
-              <div class="milestone-icon">✓</div>
-              <h3>Website Launch</h3>
-              <p>Community information hub created</p>
-            </div>
             <div class="milestone active">
               <div class="milestone-icon">📋</div>
               <h3>Petition Drive</h3>
               <p>Goal: 1,000 signatures</p>
               <div class="progress-bar">
-                <div class="progress-fill" style="width: 79%"></div>
+                <div class="progress-fill" style="width: 96%"></div>
               </div>
-              <span class="progress-text">791 of 1,000 signatures</span>
+              <span class="progress-text">966 of 1,000 signatures</span>
+            </div>
+            <div class="milestone active">
+              <div class="milestone-icon">⚖️</div>
+              <h3>Plan Commission Vote</h3>
+              <p>September 29, 2025 - CRITICAL</p>
             </div>
             <div class="milestone">
-              <div class="milestone-icon">🎉</div>
-              <h3>Mooresville Street Fair</h3>
-              <p>September 20, 2025</p>
+              <div class="milestone-icon">🎤</div>
+              <h3>October 2nd Debate</h3>
+              <p>October 2, 2025</p>
             </div>
             <div class="milestone">
-              <div class="milestone-icon">📢</div>
-              <h3>Action Rally</h3>
-              <p>September 24, 2025</p>
+              <div class="milestone-icon">☕</div>
+              <h3>Commissioner Meeting</h3>
+              <p>October 6, 2025</p>
             </div>
           </div>
         </div>
@@ -252,9 +254,11 @@
           </span>
           <h3>Get Updates</h3>
           <p>No spam. Only critical community updates.</p>
-          <form id="newsletter-form" class="newsletter-form">
+          <form id="newsletter-form" class="newsletter-form" action="https://formspree.io/f/xdkogqpz" method="POST">
             <div class="form-group">
-              <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+              <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required>
+              <input type="hidden" name="form_type" value="newsletter_signup">
+              <input type="hidden" name="_subject" value="New Newsletter Subscription - Stop Monrovia Data Center">
               <button type="submit" class="btn btn-primary">Subscribe</button>
             </div>
             <p class="form-message" id="newsletter-message"></p>
@@ -262,6 +266,82 @@
         </div>
       </section>
       
+      <section class="plan-commission-section">
+        <div class="container">
+          <h2>Contact Morgan County Plan Commission</h2>
+          <div class="urgent-action">
+            <h3>URGENT ACTION NEEDED</h3>
+            <p class="call-to-action"><strong>Email your Morgan County Plan Commission and tell them to not rezone another 160 acres for the Data Center!</strong></p>
+          </div>
+          
+          <div class="plan-commission-emails">
+            <h3>Plan Commission Members</h3>
+            <div class="email-list">
+              <div class="email-item">
+                <h4>Terry Brock</h4>
+                <p>Email: <a href="mailto:tbrock@morgancounty.in.gov">tbrock@morgancounty.in.gov</a></p>
+                <p>Phone: (765) 342-1064</p>
+              </div>
+              <div class="email-item">
+                <h4>Joe Crone</h4>
+                <p>Email: <a href="mailto:jcrone@morgancounty.in.gov">jcrone@morgancounty.in.gov</a></p>
+                <p>Phone: (765) 346-0025</p>
+              </div>
+              <div class="email-item">
+                <h4>Kenny Hale</h4>
+                <p>Email: <a href="mailto:khale@morgancounty.in.gov">khale@morgancounty.in.gov</a></p>
+                <p>Phone: (765) 318-3390</p>
+              </div>
+              <div class="email-item">
+                <h4>Michelle Jones</h4>
+                <p>Email: <a href="mailto:jonesm@purdue.edu">jonesm@purdue.edu</a></p>
+                <p>Phone: (765) 342-1010</p>
+              </div>
+              <div class="email-item">
+                <h4>Melanie Depoy</h4>
+                <p>Email: <a href="mailto:depoym@aol.com">depoym@aol.com</a></p>
+                <p>Phone: (317) 698-5425</p>
+              </div>
+              <div class="email-item">
+                <h4>Dustin Frye</h4>
+                <p>Email: <a href="mailto:dustin@battinwoodruff.com">dustin@battinwoodruff.com</a></p>
+                <p>Phone: (317) 850-0661</p>
+              </div>
+              <div class="email-item">
+                <h4>Jason Maxwell</h4>
+                <p>Phone: (765) 346-0935</p>
+              </div>
+              <div class="email-item">
+                <h4>Brian Patrick</h4>
+                <p>Phone: (317) 371-5908</p>
+              </div>
+              <div class="email-item">
+                <h4>Bill Rumbaugh</h4>
+                <p>Phone: (812) 597-5271</p>
+              </div>
+            </div>
+            
+            <div class="email-template">
+              <h4>Sample Email Template</h4>
+              <div class="template-box">
+                <p><strong>Subject:</strong> OPPOSE Data Center Rezoning - Protect Our Community</p>
+                <p><strong>Dear Plan Commission Members,</strong></p>
+                <p>I am writing as a concerned resident to urge you to VOTE NO on any rezoning requests for additional data center development in Morgan County.</p>
+                <p>The proposed rezoning of another 160 acres for data center use will:</p>
+                <ul>
+                  <li>Strain our water resources</li>
+                  <li>Increase noise pollution</li>
+                  <li>Negatively impact property values</li>
+                  <li>Harm our rural community character</li>
+                </ul>
+                <p>Please stand with residents and reject this harmful development.</p>
+                <p>Sincerely,<br>[Your Name]<br>[Your Address]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="representatives-section">
         <div class="container">
           <h2>Contact Your Local Officials</h2>
@@ -457,9 +537,28 @@
         <!-- Main content is handled by the sections above -->
       </main>
 
+      <!-- Event Popup Notification -->
+      <div id="event-popup" class="event-popup" style="display: none;">
+        <div class="popup-content">
+          <button class="popup-close" onclick="closeEventPopup()">&times;</button>
+          <div class="popup-header">
+            <h3 id="popup-title">Urgent: Critical Event</h3>
+            <div class="popup-urgency">THEY'RE TRYING TO ADD AN EXTRA 158 ACRES TO THE DATA CENTER!</div>
+          </div>
+          <div class="popup-body">
+            <div id="popup-event-info"></div>
+            <div class="popup-actions">
+              <a id="popup-action-btn" href="#" class="btn btn-primary">Take Action</a>
+              <button onclick="closeEventPopup()" class="btn btn-outline">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <footer>
         <p>© 2025 Stop the Data Center in Monrovia</p>
       </footer>
+      <script src="cms-loader.js"></script>
       <script src="script.js"></script>
     </body>
     </html>

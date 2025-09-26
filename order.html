@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order T-Shirts & Signs - Stop the Data Center</title>
+  <meta name="description" content="Order Stop the Data Center t-shirts and protest signs to show your support for protecting our community.">
+  <meta name="keywords" content="Monrovia, Indiana, data center, t-shirts, signs, protest, order">
+  <meta name="author" content="Stop the Data Center Coalition">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stopmonroviadatacenter.org/order.html">
+  <meta property="og:title" content="Order T-Shirts & Signs - Stop the Data Center">
+  <meta property="og:description" content="Order Stop the Data Center t-shirts and protest signs to show your support.">
+  <meta property="og:image" content="https://stopmonroviadatacenter.org/monroviadatacenter/homehero.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://stopmonroviadatacenter.org/order.html">
+  <meta property="twitter:title" content="Order T-Shirts & Signs - Stop the Data Center">
+  <meta property="twitter:description" content="Order Stop the Data Center t-shirts and protest signs to show your support.">
+  <meta property="twitter:image" content="https://stopmonroviadatacenter.org/monroviadatacenter/homehero.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="navbar">
+        <h1><a href="index.html">Stop the Data Center</a></h1>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav id="menu" role="navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="backstory.html">Back Story</a>
+          <a href="events.html">Events</a>
+          <a href="library.html">PDF Library</a>
+          <a href="order.html" class="current-page">Order</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <img src="volunteers.jpg" alt="Community volunteers organizing materials" loading="eager">
+        <h2>Order T-Shirts & Signs</h2>
+    </div>
+
+    <main id="main-content">
+        <div class="container">
+            <section class="order-intro">
+                <h2>Show Your Support</h2>
+                <p>Order official Stop the Data Center t-shirts and protest signs to show your support for protecting our community. All proceeds help fund our campaign efforts.</p>
+            </section>
+
+            <section class="order-form-section">
+                <div class="order-form-container">
+                    <form class="order-form" id="order-form" action="https://formspree.io/f/mdkwkrve" method="POST">
+                        <h3>Order Form</h3>
+                        
+                        <!-- Contact Information -->
+                        <div class="form-section">
+                            <h4>Contact Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="order-name">Full Name *</label>
+                                    <input type="text" id="order-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-phone">Phone Number *</label>
+                                    <input type="tel" id="order-phone" name="phone" required placeholder="(555) 123-4567">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="order-email">Email Address *</label>
+                                <input type="email" id="order-email" name="email" required>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Method -->
+                        <div class="form-section">
+                            <h4>Delivery Method</h4>
+                            <div class="form-group">
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="delivery-method" value="pickup" id="delivery-pickup" required>
+                                        <span class="radio-custom"></span>
+                                        Pickup in Monrovia, IN
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="delivery-method" value="delivery" id="delivery-delivery" required>
+                                        <span class="radio-custom"></span>
+                                        Delivery (2-3 days)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Address (shown only when delivery is selected) -->
+                        <div class="form-section" id="delivery-address-section" style="display: none;">
+                            <h4>Delivery Address</h4>
+                            <div class="form-group">
+                                <label for="order-address">Street Address *</label>
+                                <input type="text" id="order-address" name="address" placeholder="123 Main Street">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="order-city">City *</label>
+                                    <input type="text" id="order-city" name="city" placeholder="Monrovia">
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-state">State *</label>
+                                    <input type="text" id="order-state" name="state" value="IN" placeholder="IN">
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-zip">ZIP Code *</label>
+                                    <input type="text" id="order-zip" name="zip" placeholder="46157">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Selection -->
+                        <div class="form-section">
+                            <h4>Product Selection</h4>
+                            
+                            <!-- T-Shirts -->
+                            <div class="product-category">
+                                <h5>T-Shirts - $15 each</h5>
+                                <p class="product-description">High-quality t-shirts</p>
+                                
+                                <div class="product-options">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="tshirt-small">Small</label>
+                                            <input type="number" id="tshirt-small" name="tshirt-small" min="0" value="0" class="quantity-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tshirt-medium">Medium</label>
+                                            <input type="number" id="tshirt-medium" name="tshirt-medium" min="0" value="0" class="quantity-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tshirt-large">Large</label>
+                                            <input type="number" id="tshirt-large" name="tshirt-large" min="0" value="0" class="quantity-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tshirt-xl">X-Large</label>
+                                            <input type="number" id="tshirt-xl" name="tshirt-xl" min="0" value="0" class="quantity-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tshirt-xxl">XX-Large</label>
+                                            <input type="number" id="tshirt-xxl" name="tshirt-xxl" min="0" value="0" class="quantity-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Yard Signs -->
+                            <div class="product-category">
+                                <h5>Yard Signs - FREE</h5>
+                                <p class="product-description">Weather-resistant corrugated plastic signs. Signs are free however we ask for a donation. Orders will be fulfilled either way. Donations will pay for future legal fees and marketing our movement.</p>
+                                
+                                <div class="product-options">
+                                    <div class="form-group">
+                                        <label for="yard-signs">Quantity</label>
+                                        <input type="number" id="yard-signs" name="yard-signs" min="0" value="0" class="quantity-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Handheld Signs -->
+                            <div class="product-category">
+                                <h5>Handheld Protest Signs - FREE</h5>
+                                <p class="product-description">Sturdy poster board signs. Signs are free however we ask for a donation. Orders will be fulfilled either way. Donations will pay for future legal fees and marketing our movement.</p>
+                                
+                                <div class="product-options">
+                                    <div class="form-group">
+                                        <label for="handheld-signs">Quantity</label>
+                                        <input type="number" id="handheld-signs" name="handheld-signs" min="0" value="0" class="quantity-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="form-section">
+                            <h4>Order Summary</h4>
+                            <div class="order-summary" id="order-summary">
+                                <div class="summary-line">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">$0.00</span>
+                                </div>
+                                <div class="summary-line" id="delivery-fee-line" style="display: none;">
+                                    <span>Delivery Fee:</span>
+                                    <span id="delivery-fee">$5.00</span>
+                                </div>
+                                <div class="summary-line total">
+                                    <span><strong>Total:</strong></span>
+                                    <span id="total"><strong>$0.00</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Special Instructions -->
+                        <div class="form-section">
+                            <h4>Special Instructions (Optional)</h4>
+                            <div class="form-group">
+                                <label for="order-instructions">Any special requests or notes?</label>
+                                <textarea id="order-instructions" name="instructions" rows="3" placeholder="Any special instructions for your order..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Hidden fields for Formspree -->
+                        <input type="hidden" name="order-total" id="hidden-total">
+                        <input type="hidden" name="order-details" id="hidden-order-details">
+                        <input type="hidden" name="_subject" value="New T-Shirt & Sign Order">
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Submit Order</button>
+                            <p class="form-note">We'll contact you within 24 hours to confirm your order and arrange payment.</p>
+                        </div>
+
+                        <div class="form-message" id="order-message"></div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="order-info">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Payment</h3>
+                        <p>We accept cash, check, or Venmo. Payment is due when you pick up your order or upon delivery.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Processing Time</h3>
+                        <p>We'll contact you when your order is ready.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Questions?</h3>
+                        <p>Contact us at <a href="mailto:info@protectmorgancounty.org">info@stopmonroviadatacenter.org</a> or call 317-204-2195 (Data Center Oversight Hotline).</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Stop the Data Center in Monrovia</p>
+    </footer>
+
+    <script src="cms-loader.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Order form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const deliveryRadios = document.querySelectorAll('input[name="delivery-method"]');
+            const deliveryAddressSection = document.getElementById('delivery-address-section');
+            const deliveryFeeLineElement = document.getElementById('delivery-fee-line');
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+            const orderForm = document.getElementById('order-form');
+
+            // Show/hide delivery address section
+            deliveryRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'delivery') {
+                        deliveryAddressSection.style.display = 'block';
+                        deliveryFeeLineElement.style.display = 'flex';
+                        // Make address fields required
+                        document.getElementById('order-address').required = true;
+                        document.getElementById('order-city').required = true;
+                        document.getElementById('order-state').required = true;
+                        document.getElementById('order-zip').required = true;
+                    } else {
+                        deliveryAddressSection.style.display = 'none';
+                        deliveryFeeLineElement.style.display = 'none';
+                        // Make address fields not required
+                        document.getElementById('order-address').required = false;
+                        document.getElementById('order-city').required = false;
+                        document.getElementById('order-state').required = false;
+                        document.getElementById('order-zip').required = false;
+                    }
+                    calculateTotal();
+                });
+            });
+
+            // Calculate total when quantities change
+            quantityInputs.forEach(input => {
+                input.addEventListener('input', calculateTotal);
+            });
+
+            function calculateTotal() {
+                let subtotal = 0;
+                
+                // T-shirts - $15 each
+                const tshirtSizes = ['small', 'medium', 'large', 'xl', 'xxl'];
+                tshirtSizes.forEach(size => {
+                    const quantity = parseInt(document.getElementById(`tshirt-${size}`).value) || 0;
+                    subtotal += quantity * 15;
+                });
+
+                // Signs are FREE - no cost added
+                // const yardSigns = parseInt(document.getElementById('yard-signs').value) || 0;
+                // const handheldSigns = parseInt(document.getElementById('handheld-signs').value) || 0;
+
+                // Delivery fee
+                const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked');
+                const deliveryFee = (deliveryMethod && deliveryMethod.value === 'delivery') ? 5 : 0;
+                
+                const total = subtotal + deliveryFee;
+
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+            }
+
+            // Form submission
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const messageElement = document.getElementById('order-message');
+                const submitButton = orderForm.querySelector('button[type="submit"]');
+                
+                // Check if at least one item is ordered
+                let hasItems = false;
+                quantityInputs.forEach(input => {
+                    if (parseInt(input.value) > 0) {
+                        hasItems = true;
+                    }
+                });
+
+                if (!hasItems) {
+                    messageElement.textContent = 'Please select at least one item to order.';
+                    messageElement.className = 'form-message error';
+                    return;
+                }
+
+                // Prepare order details for email
+                const orderDetails = [];
+                const tshirtSizes = ['small', 'medium', 'large', 'xl', 'xxl'];
+                
+                // Add T-shirt details
+                tshirtSizes.forEach(size => {
+                    const quantity = parseInt(document.getElementById(`tshirt-${size}`).value) || 0;
+                    if (quantity > 0) {
+                        orderDetails.push(`T-Shirts ${size.charAt(0).toUpperCase() + size.slice(1)}: ${quantity}`);
+                    }
+                });
+
+                // Add yard signs
+                const yardSigns = parseInt(document.getElementById('yard-signs').value) || 0;
+                if (yardSigns > 0) {
+                    orderDetails.push(`Yard Signs: ${yardSigns}`);
+                }
+
+                // Add handheld signs
+                const handheldSigns = parseInt(document.getElementById('handheld-signs').value) || 0;
+                if (handheldSigns > 0) {
+                    orderDetails.push(`Handheld Signs: ${handheldSigns}`);
+                }
+
+                // Calculate totals
+                let subtotal = 0;
+                tshirtSizes.forEach(size => {
+                    const quantity = parseInt(document.getElementById(`tshirt-${size}`).value) || 0;
+                    subtotal += quantity * 15;
+                });
+                // Signs are FREE - no cost added
+                // subtotal += yardSigns * 10;
+                // subtotal += handheldSigns * 8;
+
+                const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked');
+                const deliveryFee = (deliveryMethod && deliveryMethod.value === 'delivery') ? 5 : 0;
+                const total = subtotal + deliveryFee;
+
+                // Populate hidden fields
+                document.getElementById('hidden-total').value = `$${total.toFixed(2)}`;
+                document.getElementById('hidden-order-details').value = orderDetails.join(', ');
+
+                // Submit to Formspree
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                
+                // Create FormData and submit
+                const formData = new FormData(orderForm);
+                
+                fetch(orderForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        messageElement.textContent = 'Thank you for your order! We\'ll contact you within 24 hours to confirm your order and arrange payment.';
+                        messageElement.className = 'form-message success';
+                        orderForm.reset();
+                        calculateTotal();
+                        deliveryAddressSection.style.display = 'none';
+                        deliveryFeeLineElement.style.display = 'none';
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    messageElement.textContent = 'There was an error submitting your order. Please try again or contact us directly.';
+                    messageElement.className = 'form-message error';
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Order';
+                });
+            });
+
+            // Initialize total calculation
+            calculateTotal();
+        });
+    </script>
+</body>
+</html>
