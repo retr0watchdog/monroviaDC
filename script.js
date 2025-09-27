@@ -79,7 +79,7 @@ const eventPopupSystem = {
       id: 'plan-commission-vote',
       title: 'Plan Commission Vote',
       date: '2025-09-29',
-      time: '6:00 PM',
+      time: '6:30 PM (Rally at 5:30 PM',
       location: 'County Admin Building, Martinsville, IN',
       description: 'Critical Plan Commission vote on data center rezoning. Your attendance and voice are crucial!',
       actionUrl: 'events.html',
