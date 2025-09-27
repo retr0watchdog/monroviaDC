@@ -79,9 +79,9 @@ const eventPopupSystem = {
       id: 'plan-commission-vote',
       title: 'Plan Commission Vote',
       date: '2025-09-29',
-      time: '6:30 PM (Rally at 5:30 PM',
+      time: '6:30 PM (Rally at 5:30 PM)',
       location: 'County Admin Building, Martinsville, IN',
-      description: 'Critical Plan Commission vote on data center rezoning. Your attendance and voice are crucial!',
+      description: 'Critical Plan Commission vote on data center rezoning. Rally starts at 5:30 PM, meeting at 6:30 PM. Your attendance and voice are crucial!',
       actionUrl: 'events.html',
       actionText: 'Get Details'
     },
@@ -111,7 +111,7 @@ const eventPopupSystem = {
   shouldShowPopup(event) {
     const now = new Date();
     const eventDate = new Date(event.date + 'T23:59:59'); // End of event day
-    const daysBefore = 7; // Show popup 7 days before event
+    const daysBefore = 14; // Show popup 14 days before event (increased window)
     const showFromDate = new Date(eventDate.getTime() - (daysBefore * 24 * 60 * 60 * 1000));
     
     // Show popup if we're within the window and event hasn't passed
@@ -189,15 +189,35 @@ const eventPopupSystem = {
     if (window.location.pathname.includes('/admin/')) return;
     
     const urgentEvent = this.getUrgentEvent();
-    if (!urgentEvent) return;
+    console.log('Urgent event found:', urgentEvent); // Debug log
+    
+    if (!urgentEvent) {
+      console.log('No urgent events found'); // Debug log
+      return;
+    }
+    
+    // Check if already dismissed today
+    const wasDismissed = this.wasPopupDismissedToday(urgentEvent.id);
+    console.log('Was popup dismissed today?', wasDismissed); // Debug log
     
     // Don't show if already dismissed today
-    if (this.wasPopupDismissedToday(urgentEvent.id)) return;
+    if (wasDismissed) return;
     
     // Show popup after a short delay
     setTimeout(() => {
+      console.log('Showing popup for:', urgentEvent.title); // Debug log
       this.showPopup(urgentEvent);
     }, 2000);
+  },
+
+  // Force show popup (for testing)
+  forceShowPopup() {
+    const urgentEvent = this.getUrgentEvent();
+    if (urgentEvent) {
+      // Clear any dismissal
+      localStorage.removeItem(`popup-dismissed-${urgentEvent.id}`);
+      this.showPopup(urgentEvent);
+    }
   }
 };
 
