@@ -99,11 +99,10 @@ const eventPopupSystem = {
       id: 'commissioner-meeting',
       title: 'Commissioner Meeting & Coffee Rally',
       date: '2025-10-06',
-      time: '9:30 AM',
+      time: '7:30 AM (Urban Brew) | 8:30 AM (Drainage Board) | 9:30 AM (Commissioners Meeting)',
       location: '180 S Main St, Martinsville, IN',
-      description: 'Morgan County Commissioner Meeting with Coffee & Donut Rally at 8:30am. Rally location on Facebook.',
+      description: 'Morgan County Commissioner Meeting with Coffee & Donut Rally. Join us for a full day of community action!',
       actionUrl: 'events.html',
-      actionText: 'Get Details'
     }
   ],
 
