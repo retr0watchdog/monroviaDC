@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events Calendar - Stop the Data Center in Monrovia</title>
   <meta name="description" content="Join our community events to stop the data center development in Monrovia. Town halls, protests, and petition drives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -48,6 +50,23 @@
         </div>
       </section>
 
+      <section class="county-calendar-section">
+        <div class="county-calendar-card">
+          <div class="county-calendar-body">
+            <div>
+              <h3>Morgan County Government Meeting Calendar</h3>
+              <p>Plan Commission hearings, County Commissioner meetings, and Town Council sessions are where decisions about the data center are made. Showing up matters — officials pay attention when residents attend.</p>
+              <p><strong>Key meetings to watch:</strong> Morgan County Plan Commission, County Commissioners, Monrovia Town Council, Mooresville Town Council.</p>
+              <a href="https://morgancounty.in.gov/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View County Meeting Calendar</a>
+            </div>
+            <div class="county-calendar-note">
+              <p class="county-calendar-note-label">Why it matters</p>
+              <p>Permit approvals, rezoning requests, and utility contracts all go through these boards. Your presence and public comment are legally part of the record.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="facebook-section">
         <div class="facebook-card">
           <h3>Latest from Facebook</h3>
@@ -83,7 +102,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Stop the Data Center in Monrovia</p>
+    <p>© 2026 Stop the Data Center in Monrovia</p>
   </footer>
 
   <style>
@@ -291,8 +310,9 @@
   </style>
 
   <script>
-    let currentMonth = 7; // August (0-based)
-    let currentYear = 2025;
+    const _now = new Date();
+    let currentMonth = _now.getMonth();
+    let currentYear = _now.getFullYear();
 
     const monthNames = [
       'January', 'February', 'March', 'April', 'May', 'June',
@@ -529,10 +549,10 @@
       modalBody.innerHTML = `
         <h2>${event.title}</h2>
         <div class="event-info">
-          <p><strong>📅 Date:</strong> ${dateStr}</p>
-          <p><strong>🕒 Time:</strong> ${event.time}</p>
-          <p><strong>📍 Location:</strong> ${event.location}</p>
-          <p><strong>🏠 Address:</strong> ${event.address}</p>
+          <p><strong>Date:</strong> ${dateStr}</p>
+          <p><strong>Time:</strong> ${event.time}</p>
+          <p><strong>Location:</strong> ${event.location}</p>
+          <p><strong>Address:</strong> ${event.address}</p>
         </div>
         <div class="event-description">
           <h3>About This Event</h3>

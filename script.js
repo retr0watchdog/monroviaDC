@@ -2,16 +2,13 @@
 function toggleMenu() {
   const menu = document.getElementById('menu');
   const menuToggle = document.querySelector('.menu-toggle');
-  
+
   menu.classList.toggle('active');
   menuToggle.classList.toggle('active');
-  
-  // Prevent body scroll when menu is open on mobile
-  if (menu.classList.contains('active')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+
+  const isOpen = menu.classList.contains('active');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 // Close menu when clicking outside
@@ -22,6 +19,7 @@ document.addEventListener('click', function(event) {
   if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
     menu.classList.remove('active');
     menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 });
@@ -33,6 +31,7 @@ window.addEventListener('resize', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     menu.classList.remove('active');
     menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 });
@@ -82,6 +81,7 @@ document.addEventListener('keydown', function(e) {
     if (menu.classList.contains('active')) {
       menu.classList.remove('active');
       menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       menuToggle.focus();
     }
@@ -169,32 +169,37 @@ function handleContactForm() {
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const submitBtn = this.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      
-      // Show loading state
+
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
-      submitBtn.classList.add('loading');
-      
-      // Simulate form submission (replace with actual backend integration)
-      setTimeout(() => {
-        // Reset form
-        this.reset();
-        
-        // Show success message
-        submitBtn.textContent = 'Message Sent!';
-        submitBtn.classList.remove('loading');
-        submitBtn.style.background = 'var(--green)';
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.background = '';
-        }, 3000);
-      }, 1500);
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          contactForm.reset();
+          submitBtn.textContent = 'Message Sent!';
+          submitBtn.style.background = 'var(--green)';
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+          }, 3000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(() => {
+        submitBtn.textContent = 'Error — try again';
+        submitBtn.disabled = false;
+        setTimeout(() => { submitBtn.textContent = originalText; }, 3000);
+      });
     });
   }
 }
